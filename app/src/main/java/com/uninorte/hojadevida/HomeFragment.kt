@@ -15,7 +15,7 @@ import com.uninorte.hojadevida.model.UserPersonalModel
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),View.OnClickListener  {
     lateinit var navController: NavController
     lateinit var personObj1: UserPersonalModel
     lateinit var personObj2: UserPersonalModel
@@ -34,17 +34,24 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         personObj1 = UserPersonalModel("Juanita Perez",20,"Ver TV", 2)
-        personObj1 = UserPersonalModel("David Cuentas",20,"Ver TV", 2)
-        personObj1 = UserPersonalModel("Juanita Perez",20,"Ver TV", 2)
+        personObj2 = UserPersonalModel("David Cuentas",20,"Ver TV2", 2)
+        personObj3 = UserPersonalModel("Wilson Tovar",20,"Ver TV3", 2)
         view.findViewById<Button>(R.id.button_personal).setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when(v!!.id){
-
-            R.id.button_personal -> {
-                val bundle = bundleOf("data" to userPersonalModel, "nombre" to userPersonalModel.name)
-                navController!!.navigate(R.id.action_mainFragment_to_personalFragment,bundle)
+            R.id.p1Btn -> {
+                val bundle = bundleOf("data" to personObj1, "nombre" to personObj1.name)
+                navController!!.navigate(R.id.action_homeFragment_to_mainFragment,bundle)
+            }
+            R.id.p2Btn -> {
+                val bundle = bundleOf("data" to personObj2, "nombre" to personObj2.name)
+                navController!!.navigate(R.id.action_homeFragment_to_mainFragment,bundle)
+            }
+            R.id.p3Btn -> {
+                val bundle = bundleOf("data" to personObj3, "nombre" to personObj3.name)
+                navController!!.navigate(R.id.action_homeFragment_to_mainFragment,bundle)
             }
 
         }
