@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -18,7 +19,7 @@ import com.uninorte.hojadevida.model.UserPersonalModel
 class MainFragment : Fragment(), View.OnClickListener {
 
     lateinit var navController: NavController
-    lateinit var userPersonalModel: UserPersonalModel
+    lateinit var user: UserPersonalModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +32,12 @@ class MainFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        userPersonalModel = UserPersonalModel("Juanita Perez",20,"Ver TV", 2)
+        user = arguments!!.getParcelable("data")!!
+
+
+        view.findViewById<TextView>(R.id.textView2).text = user.name
+        view.findViewById<TextView>(R.id.textView7).text = user.hobby
+
         view.findViewById<Button>(R.id.button_personal).setOnClickListener(this)
     }
 
@@ -39,7 +45,7 @@ class MainFragment : Fragment(), View.OnClickListener {
        when(v!!.id){
 
            R.id.button_personal -> {
-               val bundle = bundleOf("data" to userPersonalModel, "nombre" to userPersonalModel.name)
+               val bundle = bundleOf("data" to user, "nombre" to user.name)
                navController!!.navigate(R.id.action_mainFragment_to_personalFragment,bundle)
            }
 
