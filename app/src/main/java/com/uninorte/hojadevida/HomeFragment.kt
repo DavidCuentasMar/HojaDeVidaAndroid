@@ -15,7 +15,7 @@ import com.uninorte.hojadevida.model.UserPersonalModel
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment : Fragment(),View.OnClickListener  {
+class HomeFragment : Fragment(), View.OnClickListener  {
     lateinit var navController: NavController
     lateinit var personObj1: UserPersonalModel
     lateinit var personObj2: UserPersonalModel
@@ -36,7 +36,10 @@ class HomeFragment : Fragment(),View.OnClickListener  {
         personObj1 = UserPersonalModel("Juanita Perez",20,"Ver TV", 2)
         personObj2 = UserPersonalModel("David Cuentas",20,"Ver TV2", 2)
         personObj3 = UserPersonalModel("Wilson Tovar",20,"Ver TV3", 2)
-        view.findViewById<Button>(R.id.button_personal).setOnClickListener(this)
+        view.findViewById<Button>(R.id.p1Btn).setOnClickListener(this)
+        view.findViewById<Button>(R.id.p2Btn).setOnClickListener(this)
+        view.findViewById<Button>(R.id.p3Btn).setOnClickListener(this)
+
     }
 
     override fun onClick(v: View?) {
