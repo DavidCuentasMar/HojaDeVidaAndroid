@@ -29,5 +29,8 @@ class PersonalFragment : Fragment() {
 
         view.findViewById<TextView>(R.id.textViewHobby).text = user.hobby
         view.findViewById<TextView>(R.id.textViewNombre).text = arguments!!.getString("nombre")!!
+
+
+        view.findViewById<TextView>(R.id.textViewNumHermanos).text = "${user.numeroHermanos}"
     }
 }

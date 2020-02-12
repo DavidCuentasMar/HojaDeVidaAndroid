@@ -15,7 +15,7 @@ import com.uninorte.hojadevida.model.UserPersonalModel
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment : Fragment(), View.OnClickListener  {
+class HomeFragment : Fragment(), View.OnClickListener {
     lateinit var navController: NavController
     lateinit var personObj1: UserPersonalModel
     lateinit var personObj2: UserPersonalModel
@@ -33,28 +33,29 @@ class HomeFragment : Fragment(), View.OnClickListener  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        personObj1 = UserPersonalModel("Juanita Perez",20,"Ver TV", 2)
-        personObj2 = UserPersonalModel("David Cuentas",20,"Ver TV2", 2)
-        personObj3 = UserPersonalModel("Wilson Tovar",20,"Ver TV3", 2)
+
+        personObj1 = UserPersonalModel("Juanita Perez", 30, "Dormir", 2, R.mipmap.honoree_avatar)
+        personObj2 = UserPersonalModel("David Cuentas", 23, "Ver Series", 1, R.mipmap.honoree_avatar)
+        personObj3 = UserPersonalModel("Wilson Tovar", 21, "Leer poesía", 2, R.mipmap.honoree_avatar)
+
         view.findViewById<Button>(R.id.p1Btn).setOnClickListener(this)
         view.findViewById<Button>(R.id.p2Btn).setOnClickListener(this)
         view.findViewById<Button>(R.id.p3Btn).setOnClickListener(this)
-
     }
 
     override fun onClick(v: View?) {
-        when(v!!.id){
+        when (v!!.id) {
             R.id.p1Btn -> {
                 val bundle = bundleOf("data" to personObj1, "nombre" to personObj1.name)
-                navController!!.navigate(R.id.action_homeFragment_to_mainFragment,bundle)
+                navController!!.navigate(R.id.action_homeFragment_to_mainFragment, bundle)
             }
             R.id.p2Btn -> {
                 val bundle = bundleOf("data" to personObj2, "nombre" to personObj2.name)
-                navController!!.navigate(R.id.action_homeFragment_to_mainFragment,bundle)
+                navController!!.navigate(R.id.action_homeFragment_to_mainFragment, bundle)
             }
             R.id.p3Btn -> {
                 val bundle = bundleOf("data" to personObj3, "nombre" to personObj3.name)
-                navController!!.navigate(R.id.action_homeFragment_to_mainFragment,bundle)
+                navController!!.navigate(R.id.action_homeFragment_to_mainFragment, bundle)
             }
 
         }

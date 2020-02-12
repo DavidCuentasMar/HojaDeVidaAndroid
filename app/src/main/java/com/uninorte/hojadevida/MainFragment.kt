@@ -35,8 +35,9 @@ class MainFragment : Fragment(), View.OnClickListener {
         user = arguments!!.getParcelable("data")!!
 
 
-        view.findViewById<TextView>(R.id.textView2).text = user.name
-        view.findViewById<TextView>(R.id.textView7).text = user.hobby
+        view.findViewById<TextView>(R.id.textView).text = user.name
+        view.findViewById<TextView>(R.id.textView2).text = user.hobby
+        view.findViewById<TextView>(R.id.textView3).text = "${user.edad} años"
 
         view.findViewById<Button>(R.id.button_personal).setOnClickListener(this)
     }
